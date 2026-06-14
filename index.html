@@ -305,6 +305,114 @@
       gap: 8px;
     }
 
+    .image-placeholder {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px dashed color-mix(in oklab, var(--primary) 38%, var(--border) 62%);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,255,0.84)),
+        linear-gradient(135deg, rgba(239,88,139,0.04), rgba(99,102,241,0.04));
+    }
+
+    .image-placeholder.large {
+      min-height: 280px;
+      align-content: start;
+    }
+
+    .image-placeholder.medium {
+      min-height: 220px;
+      align-content: start;
+    }
+
+    .placeholder-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .placeholder-title {
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    .placeholder-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(99,102,241,0.10);
+      color: var(--indigo);
+      font-size: 11px;
+      font-weight: 500;
+      font-family: "Fira Code", monospace;
+    }
+
+    .placeholder-frame {
+      min-height: 132px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(rgba(230,233,242,0.8) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230,233,242,0.8) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(255,255,255,0.86), rgba(243,245,252,0.9));
+      background-size: 18px 18px, 18px 18px, auto;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .placeholder-frame strong {
+      font-size: 15px;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      max-width: 28ch;
+    }
+
+    .placeholder-copy {
+      font-size: 14px;
+      line-height: 1.6;
+      color: color-mix(in oklab, var(--foreground) 76%, white 24%);
+    }
+
+    .placeholder-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: color-mix(in oklab, var(--foreground) 72%, white 28%);
+    }
+
+    .placeholder-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .placeholder-cell {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.84);
+      display: grid;
+      gap: 6px;
+    }
+
+    .placeholder-cell strong {
+      font-size: 14px;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
     .section {
       padding: 12px 0;
     }
@@ -592,7 +700,8 @@
       .support-grid,
       .team-grid,
       .proof-grid,
-      .mini-compare {
+      .mini-compare,
+      .placeholder-strip {
         grid-template-columns: 1fr;
       }
 
@@ -690,6 +799,24 @@
             <li>Check that the room is usable and coherent, not just visually plausible.</li>
             <li>Match the concept to real items before the final render becomes the output.</li>
           </ol>
+
+
+          <div class="image-placeholder large" aria-label="Hero product screenshot placeholder">
+            <div class="placeholder-top">
+              <div class="placeholder-title">Planned image — core product UI</div>
+              <div class="placeholder-badge">must-have</div>
+            </div>
+            <div class="placeholder-frame">
+              <strong>Desktop product UI showing input apartment / planning state / matched products / final room preview</strong>
+            </div>
+            <div class="placeholder-copy">Main proof image. It should make the product feel real in under 5 seconds.</div>
+            <ul class="placeholder-list">
+              <li>Left: floorplan or empty-apartment input</li>
+              <li>Middle: layout / validation / furniture placement</li>
+              <li>Right: product matches with price, dimensions, and availability</li>
+              <li>Visible status like grounded, validated, or budget-fit</li>
+            </ul>
+          </div>
         </aside>
       </div>
     </section>
@@ -721,6 +848,17 @@
                   <li><strong>A path from image to action.</strong> Useful for sourcing, budgeting, and implementation.</li>
                 </ul>
               </div>
+            </div>
+
+            <div class="image-placeholder medium" aria-label="Pretty render versus buildable room placeholder">
+              <div class="placeholder-top">
+                <div class="placeholder-title">Planned image — pretty vs buildable</div>
+                <div class="placeholder-badge">comparison</div>
+              </div>
+              <div class="placeholder-frame">
+                <strong>Side-by-side visual: glamorous but fake render on the left, grounded buildable room on the right</strong>
+              </div>
+              <div class="placeholder-copy">Minimal callouts only: fake furniture / no sourcing path vs real SKUs / real dimensions / execution-ready.</div>
             </div>
           </div>
         </div>
@@ -759,6 +897,17 @@
                 <div class="flow-copy">Produce the final room image only after the room concept is grounded in real-world constraints.</div>
               </div>
             </div>
+
+            <div class="image-placeholder medium" aria-label="Planning and validation state placeholder">
+              <div class="placeholder-top">
+                <div class="placeholder-title">Planned image — planning layer</div>
+                <div class="placeholder-badge">workflow proof</div>
+              </div>
+              <div class="placeholder-frame">
+                <strong>Top-down planning state with room boundaries, furniture footprints, circulation, zones, and validation markers</strong>
+              </div>
+              <div class="placeholder-copy">Shows the intermediate planning layer, not just prompt → render magic.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -785,6 +934,32 @@
               <div>
                 <strong>Buildable room</strong>
                 <p class="meta-copy">Holds up when the next question is sourcing, pricing, or implementation.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="image-placeholder medium" aria-label="Grounded SKU proof placeholder">
+            <div class="placeholder-top">
+              <div class="placeholder-title">Planned image — grounded output proof</div>
+              <div class="placeholder-badge">moat proof</div>
+            </div>
+            <div class="placeholder-frame">
+              <strong>Final room image with numbered item tags, SKU cards, dimensions, vendor names, and total room budget</strong>
+            </div>
+            <div class="placeholder-copy">Visual proof of grounding: make “buildable” concrete.</div>
+            <div class="placeholder-strip">
+              <div class="placeholder-cell">
+                <strong>Room image</strong>
+                <div class="meta-copy">Rendered room with 4–6 visible item markers.</div>
+              </div>
+              <div class="placeholder-cell">
+                <strong>SKU cards</strong>
+                <div class="meta-copy">Vendor, price, dimensions, availability.</div>
+              </div>
+              <div class="placeholder-cell">
+                <strong>Budget block</strong>
+                <div class="meta-copy">Total room package cost and substitutions if needed.</div>
               </div>
             </div>
           </div>
@@ -835,6 +1010,31 @@
                 <p>Furnishing packages, sourcing workflows, renovation planning, and eventually a transaction layer around execution.</p>
               </div>
             </div>
+
+            <div class="image-placeholder large" aria-label="Empty apartment case study placeholder">
+              <div class="placeholder-top">
+                <div class="placeholder-title">Planned image — empty apartment case</div>
+                <div class="placeholder-badge">wedge proof</div>
+              </div>
+              <div class="placeholder-frame">
+                <strong>Three-frame case: empty unit → structured plan → furnished buildable result</strong>
+              </div>
+              <div class="placeholder-copy">Use a believable real apartment. This should make the wedge obvious at a glance.</div>
+              <div class="placeholder-strip">
+                <div class="placeholder-cell">
+                  <strong>Frame 1</strong>
+                  <div class="meta-copy">Real empty apartment photo or floorplan.</div>
+                </div>
+                <div class="placeholder-cell">
+                  <strong>Frame 2</strong>
+                  <div class="meta-copy">Layout overlay with zones, dimensions, and furniture footprints.</div>
+                </div>
+                <div class="placeholder-cell">
+                  <strong>Frame 3</strong>
+                  <div class="meta-copy">Final interior tied to real items, not fantasy furniture.</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="panel section-card stack">
@@ -861,6 +1061,17 @@
                   <div class="meta-copy">Move from generation into the infrastructure that connects room design to execution and purchase.</div>
                 </div>
               </div>
+            </div>
+
+            <div class="image-placeholder medium" aria-label="Implementation handoff placeholder">
+              <div class="placeholder-top">
+                <div class="placeholder-title">Planned image — handoff artifact</div>
+                <div class="placeholder-badge">end state</div>
+              </div>
+              <div class="placeholder-frame">
+                <strong>One-page room package or spec sheet with image, product list, pricing, and install notes</strong>
+              </div>
+              <div class="placeholder-copy">Show the end output: something a user can act on, not just admire.</div>
             </div>
           </div>
         </div>
