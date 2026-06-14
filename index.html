@@ -10,19 +10,19 @@
   <style>
     :root {
       --bg: oklch(0.98 0.00 247.84);
-      --bg-soft: linear-gradient(135deg, rgba(236,241,255,0.92) 0%, rgba(255,236,244,0.92) 100%);
+      --bg-soft: linear-gradient(135deg, rgba(243,245,251,0.96) 0%, rgba(255,246,250,0.96) 100%);
       --fg: oklch(0.16 0.04 281.83);
       --muted: oklch(0.48 0.04 273.00);
       --primary: oklch(0.67 0.29 341.41);
       --primary-ink: oklch(0.43 0.19 344.00);
       --accent: oklch(0.89 0.17 171.27);
       --accent-ink: oklch(0.44 0.12 180.00);
-      --card: rgba(255,255,255,0.82);
-      --card-strong: rgba(255,255,255,0.92);
+      --card: rgba(255,255,255,0.92);
+      --card-strong: rgba(255,255,255,0.98);
       --border: oklch(0.92 0.01 225.09);
       --dark: oklch(0.25 0.06 281.14);
-      --shadow-sm: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
-      --shadow-xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
+      --shadow-sm: 0px 2px 8px -4px hsl(250 30% 10% / 0.10), 0px 0px 0px 1px hsl(240 14% 88% / 0.85);
+      --shadow-xl: 0px 12px 28px -20px hsl(250 30% 10% / 0.22), 0px 0px 0px 1px hsl(240 14% 88% / 0.92);
       --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
@@ -36,8 +36,8 @@
       font-family: "Outfit", system-ui, sans-serif;
       color: var(--fg);
       background:
-        radial-gradient(circle at top left, rgba(255, 220, 235, 0.48), transparent 26%),
-        radial-gradient(circle at top right, rgba(190, 243, 234, 0.34), transparent 24%),
+        radial-gradient(circle at top left, rgba(255, 226, 238, 0.28), transparent 24%),
+        radial-gradient(circle at top right, rgba(190, 243, 234, 0.18), transparent 22%),
         var(--bg);
       line-height: 1.45;
     }
@@ -54,8 +54,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(14px);
-      background: rgba(252, 252, 254, 0.74);
-      border-bottom: 1px solid rgba(230,232,238,0.9);
+      background: rgba(252, 252, 254, 0.88);
+      border-bottom: 1px solid rgba(223,226,235,0.95);
     }
 
     .topbar-inner {
@@ -86,9 +86,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px 16px;
-      color: var(--muted);
+      color: rgba(54,59,74,0.88);
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .hero {
@@ -104,9 +104,9 @@
 
     .hero-panel, .card {
       background: var(--card);
-      border: 1px solid rgba(255,255,255,0.72);
+      border: 1px solid rgba(229,232,240,0.96);
       box-shadow: var(--shadow-sm);
-      border-radius: 24px;
+      border-radius: 20px;
     }
 
     .hero-panel {
@@ -208,6 +208,66 @@
     .hero-side {
       display: grid;
       gap: 16px;
+    }
+
+    .artifact-card {
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.99), rgba(247,248,251,0.98));
+      border: 1px solid rgba(226,230,238,0.96);
+      box-shadow: var(--shadow-xl);
+      border-radius: 20px;
+    }
+
+    .artifact-flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .artifact-stage {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(228,231,237,0.95);
+    }
+
+    .artifact-stage:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .artifact-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-ink);
+      padding-top: 2px;
+    }
+
+    .artifact-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .proof-strip {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .proof-line {
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(228,231,237,0.95);
+      background: rgba(250,251,253,0.98);
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(46,50,63,0.92);
     }
 
     .side-card {
@@ -362,9 +422,9 @@
 
     .contrast-box {
       padding: 22px;
-      border-radius: 24px;
+      border-radius: 18px;
       border: 1px solid rgba(231,233,240,0.95);
-      background: rgba(255,255,255,0.84);
+      background: rgba(255,255,255,0.92);
     }
 
     .contrast-box.bad {
@@ -391,8 +451,8 @@
 
     .problem-item, .proof-item {
       padding: 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.72);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.90);
       border: 1px solid rgba(231,233,240,0.95);
     }
 
@@ -439,7 +499,7 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 20px;
+      border-radius: 16px;
       margin-bottom: 18px;
       border: 1px solid rgba(231,233,240,0.95);
     }
@@ -495,6 +555,39 @@
       color: var(--muted);
     }
 
+    .plain-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .plain-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(228,231,237,0.95);
+    }
+
+    .plain-row:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .plain-term {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-ink);
+    }
+
+    .plain-detail {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--fg);
+    }
+
     @media (max-width: 1040px) {
       .hero-grid,
       .grid-4,
@@ -508,6 +601,12 @@
 
       .hero-meta {
         grid-template-columns: 1fr;
+      }
+
+      .artifact-stage,
+      .plain-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
       }
     }
 
@@ -528,8 +627,8 @@
       <div class="brand"><span class="brand-badge"></span> Buildable Interiors</div>
       <nav class="nav">
         <a href="#problem">Problem</a>
-        <a href="#system">System</a>
-        <a href="#moat">Moat</a>
+        <a href="#system">Workflow</a>
+        <a href="#moat">Why hard</a>
         <a href="#wedge">Wedge</a>
         <a href="#team">Team</a>
       </nav>
@@ -541,12 +640,12 @@
       <div class="shell hero-grid">
         <div class="hero-panel">
           <div class="eyebrow">Investor one-pager draft</div>
-          <h1>AI-generated interiors you can actually build</h1>
+          <h1>Most interior AI makes pretty pictures.</h1>
           <p class="hero-copy">
-            Most interior AI stops at the image. This company is building a system that turns empty apartments and floorplans into interior concepts that can move into real furniture, real materials, real budgets, and real implementation.
+            We’re trying to make rooms you can actually buy and build. Starting with empty apartments, we turn floorplans into furnished interiors tied to real items, real constraints, and real budgets.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#system">See how it works</a>
+            <a class="btn btn-primary" href="#system">See the workflow</a>
             <a class="btn btn-secondary" href="#team">Why this team</a>
           </div>
           <div class="hero-meta">
@@ -556,29 +655,45 @@
             </div>
             <div class="metric">
               <div class="metric-label">Output</div>
-              <div class="metric-value">Implementation-ready room concepts</div>
+              <div class="metric-value">Rooms that can actually be furnished and built</div>
             </div>
             <div class="metric">
-              <div class="metric-label">Thesis</div>
-              <div class="metric-value">The value is not the picture. The value is that the picture can become a room.</div>
+              <div class="metric-label">Why it matters</div>
+              <div class="metric-value">The user is not looking for inspiration. The user is trying to get a room done.</div>
             </div>
           </div>
         </div>
 
         <div class="hero-side">
-          <div class="side-card">
-            <div class="signal"><span class="dot"></span> Why this exists</div>
-            <h3>There is a gap between interior images that look good and interiors that can actually be executed.</h3>
-            <p>
-              Existing tools are good at visual plausibility. They are weak at structural plausibility, product grounding, and the handoff into sourcing, furnishing, and renovation.
-            </p>
+          <div class="artifact-card">
+            <div class="signal"><span class="dot"></span> What this looks like in practice</div>
+            <div class="artifact-flow">
+              <div class="artifact-stage">
+                <div class="artifact-kicker">Input</div>
+                <div>
+                  <div class="artifact-title">An empty apartment or a floorplan</div>
+                  <div class="mini">A blank room is where the gap between inspiration and execution is easiest to see.</div>
+                </div>
+              </div>
+              <div class="artifact-stage">
+                <div class="artifact-kicker">System</div>
+                <div>
+                  <div class="artifact-title">A room that makes sense before it looks good</div>
+                  <div class="mini">Layout first, checks second, matching to real items before the final image.</div>
+                </div>
+              </div>
+              <div class="artifact-stage">
+                <div class="artifact-kicker">Output</div>
+                <div>
+                  <div class="artifact-title">A furnished room tied to reality</div>
+                  <div class="mini">Real furniture. Real materials. Real budgets. A path into sourcing and implementation.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="side-card">
-            <div class="signal"><span class="dot"></span> Product position</div>
-            <h3>Not another render tool</h3>
-            <p>
-              The system is meant to sit between design generation and real-world implementation. It is closer to an execution layer than a pure image generator.
-            </p>
+          <div class="proof-strip">
+            <div class="proof-line"><strong>Learned truth:</strong> a generated room is not that useful if none of the furniture is real and no one can actually build it.</div>
+            <div class="proof-line"><strong>Investor signal:</strong> image generation is no longer the bottleneck. The bottleneck is turning generated interiors into something usable in the real world.</div>
           </div>
         </div>
       </div>
@@ -590,24 +705,24 @@
           <div class="section-label">Problem</div>
           <h2>Most interior AI stops at the image</h2>
           <p class="section-intro">
-            Today’s tools can generate attractive rooms, but the furniture is often fake, the layout is not grounded in execution constraints, and there is no clean path to budget, sourcing, or real implementation.
+            Current tools are good at making a room look finished. They are bad at getting you much closer to actually furnishing it.
           </p>
         </div>
         <div class="contrast">
           <div class="contrast-box bad">
-            <div class="contrast-title">What existing tools do</div>
+            <div class="contrast-title">What current tools give you</div>
             <div class="problem-list">
-              <div class="problem-item"><strong>Generate a nice render</strong><br><span class="mini">Good for presentation, weak for execution.</span></div>
-              <div class="problem-item"><strong>Use generic or fake furniture</strong><br><span class="mini">No direct path into purchasing or specification.</span></div>
-              <div class="problem-item"><strong>Stop before the real work starts</strong><br><span class="mini">No clean handoff into furnishing, pricing, or renovation.</span></div>
+              <div class="problem-item"><strong>A nice image</strong><br><span class="mini">Good for presentation. Weak for getting the room done.</span></div>
+              <div class="problem-item"><strong>Fake or generic furniture</strong><br><span class="mini">Nothing you can cleanly price, source, or specify.</span></div>
+              <div class="problem-item"><strong>No handoff into execution</strong><br><span class="mini">No real path into furnishing, pricing, or renovation.</span></div>
             </div>
           </div>
           <div class="contrast-box good">
-            <div class="contrast-title">What this company is trying to do</div>
+            <div class="contrast-title">What has to exist for a real room</div>
             <div class="problem-list">
-              <div class="problem-item"><strong>Generate a room that makes sense</strong><br><span class="mini">Grounded in layout logic and execution constraints.</span></div>
-              <div class="problem-item"><strong>Tie design to real items</strong><br><span class="mini">Furniture and materials can map to catalog reality.</span></div>
-              <div class="problem-item"><strong>Move from image to action</strong><br><span class="mini">Useful for sourcing, budgeting, and implementation.</span></div>
+              <div class="problem-item"><strong>A room that makes sense</strong><br><span class="mini">Grounded in layout logic before the final image.</span></div>
+              <div class="problem-item"><strong>Furniture tied to reality</strong><br><span class="mini">Real items and materials instead of made-up objects.</span></div>
+              <div class="problem-item"><strong>A path from image to action</strong><br><span class="mini">Useful for sourcing, budgeting, and implementation.</span></div>
             </div>
           </div>
         </div>
@@ -620,7 +735,7 @@
           <div class="section-label">System</div>
           <h2>From floorplan to buildable interior</h2>
           <p class="section-intro">
-            The product thesis is simple: the room should be structured before it is visualized. The page below stays at the high level on purpose and avoids leaking unnecessary pipeline internals.
+            The room has to make sense before it can look good. This stays high level on purpose, because the point is the workflow, not the internals.
           </p>
         </div>
         <div class="pipeline">
@@ -651,21 +766,23 @@
     <section class="section">
       <div class="shell">
         <div class="section-header">
-          <div class="section-label">Product thesis</div>
-          <h2>The output is not just a render. It is a room concept that can move toward implementation.</h2>
+          <div class="section-label">In practice</div>
+          <h2>The point is not to make a prettier render. It is to make a room someone can actually act on.</h2>
         </div>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Real items</h3>
-            <p>Furniture and materials can be tied to real catalog items instead of made-up objects that only work in the image.</p>
-          </div>
-          <div class="card">
-            <h3>Real constraints</h3>
-            <p>Dimensions, layout coherence, and budget logic can survive the generation process instead of getting lost inside a pretty render.</p>
-          </div>
-          <div class="card">
-            <h3>Real workflows</h3>
-            <p>The result can feed furnishing, sourcing, and renovation workflows rather than ending as marketing-only creative.</p>
+        <div class="card">
+          <div class="plain-list">
+            <div class="plain-row">
+              <div class="plain-term">Real items</div>
+              <div class="plain-detail">The furniture and materials should correspond to things a person can actually source instead of objects that only work inside the image.</div>
+            </div>
+            <div class="plain-row">
+              <div class="plain-term">Real constraints</div>
+              <div class="plain-detail">Dimensions, layout coherence, and budget logic need to survive the generation process rather than getting washed out by a pretty render.</div>
+            </div>
+            <div class="plain-row">
+              <div class="plain-term">Real workflows</div>
+              <div class="plain-detail">The output should help with furnishing, sourcing, and renovation instead of ending its life as marketing-only inspiration.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -677,18 +794,18 @@
           <div class="section-label">Moat</div>
           <h2>The hard part is not image generation. The hard part is making generated interiors real.</h2>
           <p class="section-intro">
-            Image generation is becoming cheap and accessible. The harder thing is producing rooms that are structurally plausible, style-consistent, and grounded in real products and downstream execution.
+            A stylish room is easy to fake. The hard part is making the room correspond to reality: real dimensions, real products, real budgets, and real constraints.
           </p>
         </div>
         <div class="grid-2">
           <div class="card">
             <div class="signal"><span class="dot"></span> What the moat is</div>
             <ul class="clean">
-              <li>layout intelligence grounded in real room logic</li>
-              <li>validity checks for usable planning</li>
-              <li>compatibility logic across products and constraints</li>
-              <li>catalog grounding instead of fake furniture</li>
-              <li>controlled generation instead of free hallucination</li>
+              <li>layout logic grounded in how real rooms work</li>
+              <li>checks that keep the room usable</li>
+              <li>matching across style, products, and constraints</li>
+              <li>real products instead of fake furniture</li>
+              <li>generation that stays inside real-world constraints</li>
             </ul>
           </div>
           <div class="card">
@@ -698,7 +815,7 @@
               <li>not one diffusion model</li>
               <li>not one impressive render</li>
               <li>not generic “AI interior design” positioning</li>
-              <li>the moat is the full system that connects generation to implementation</li>
+              <li>the moat is the full system that connects a generated room to the real world</li>
             </ul>
           </div>
         </div>
@@ -711,24 +828,24 @@
           <div class="section-label">Wedge</div>
           <h2>Start where the pain is clearest: empty apartments</h2>
           <p class="section-intro">
-            Empty apartments are a clean starting wedge because they have a recurring need for presentation, furnishing direction, and faster handoff into move-in readiness. This is the point where image generation alone stops being enough.
+            We start with empty apartments because that is where the gap between inspiration and execution is most obvious. Someone has to turn a blank space into a room that can be sold, rented, or lived in.
           </p>
         </div>
         <div class="grid-3">
           <div class="card">
             <h3>Why this starting point works</h3>
             <ul class="clean">
-              <li>clear visual before/after value</li>
+              <li>obvious before/after value</li>
               <li>repeatable input format</li>
               <li>direct link to furnishing and renovation decisions</li>
             </ul>
           </div>
           <div class="card">
-            <h3>Who can feel the pain first</h3>
+            <h3>Who feels the pain first</h3>
             <ul class="clean">
-              <li>developers</li>
+              <li>developers and furnishing operators</li>
               <li>brokers and leasing teams</li>
-              <li>furnishing and renovation flows around move-in</li>
+              <li>people trying to get a unit move-in ready</li>
             </ul>
           </div>
           <div class="card">
@@ -750,7 +867,7 @@
           <div class="section-label">Opportunity</div>
           <h2>What starts as interior generation can become an execution layer</h2>
           <p class="section-intro">
-            The larger opportunity is not just rendering. It is connecting design intent to real-world work: furnishing, sourcing, pricing, and eventually transactions.
+            If this works, the company does not stop at rendering. It becomes part of the path from design intent to furnishing, sourcing, pricing, and transactions.
           </p>
         </div>
         <div class="card">
@@ -759,14 +876,14 @@
               <div class="timeline-kicker">Now</div>
               <div>
                 <h3>Generate interiors that can actually be built</h3>
-                <p>Replace image-only interior AI with concepts that are grounded enough to matter in the real world.</p>
+                <p>Make generated interiors useful when someone actually has to furnish the room.</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-kicker">Next</div>
               <div>
                 <h3>Connect design to furnishing and sourcing</h3>
-                <p>Make the output useful for choosing products, pricing rooms, and preparing actual implementation.</p>
+                <p>Help people choose products, price rooms, and prepare the handoff into implementation.</p>
               </div>
             </div>
             <div class="timeline-item">
@@ -785,9 +902,9 @@
       <div class="shell">
         <div class="section-header">
           <div class="section-label">Team</div>
-          <h2>This is not a wrapper team</h2>
+          <h2>The founders have spent years on pieces of this problem already</h2>
           <p class="section-intro">
-            Both founders have spent years building in adjacent problem spaces: applied AI, visual generation, compatibility, recommendation, catalog intelligence, and commercialization. The team angle here is not generic “product + engineering,” but earned founder-market fit for this exact category.
+            They did not arrive at this category by accident. Aram has spent years trying to turn technical capability into products people actually want, and Vladimir has spent years building the underlying ML and computer vision systems behind problems like this.
           </p>
         </div>
         <div class="team-grid">
@@ -795,29 +912,29 @@
             <img class="team-photo" src="./aram.jpg" alt="Aram founder portrait" />
             <div class="team-name">Aram</div>
             <div class="team-role">Founder / product / startup scar tissue</div>
-            <p>Repeat founder with product judgment and a track record of pushing technical capability toward a real market wedge rather than demo novelty.</p>
-            <div class="team-quote">Knows the difference between an impressive demo and a company.</div>
+            <p>Repeat founder with product judgment and startup scar tissue. Strong at telling the difference between technical novelty and something people will actually pay for.</p>
+            <div class="team-quote">Knows the difference between an impressive demo and a product people actually need.</div>
           </div>
           <div class="team-card">
             <img class="team-photo" src="./vladimir-borisov.jpg" alt="Vladimir Borisov founder portrait" />
             <div class="team-name">Vladimir</div>
             <div class="team-role">Founder / ML / computer vision / systems</div>
-            <p>Deep applied AI builder with experience across generative imaging, compatibility systems, recommendation, vector search, mobile real-time AI, and production ML.</p>
+            <p>Deep applied AI builder across generative imaging, recommendation, vector search, mobile AI, and production ML. Strong at turning hard technical systems into something that can actually ship.</p>
             <div class="team-quote">Knows how to turn hard ML into a system that can actually ship.</div>
           </div>
         </div>
         <div class="grid-3" style="margin-top:16px;">
           <div class="card">
-            <h3>High-bar environments</h3>
-            <p>Both founders have worked in serious applied AI settings, including Google-adjacent or Google-connected work.</p>
+            <h3>Serious environments</h3>
+            <p>Both founders have worked in demanding applied AI settings, including Google-related work.</p>
           </div>
           <div class="card">
-            <h3>Adjacent-domain convergence</h3>
-            <p>Fashion compatibility, recommendation, visual generation, retail workflows, and applied CV all feed naturally into this problem.</p>
+            <h3>Pieces of the same problem</h3>
+            <p>Recommendation, compatibility, visual generation, retail workflows, and applied CV all point toward this category.</p>
           </div>
           <div class="card">
             <h3>Why it matters</h3>
-            <p>The company is trying to solve a system problem, not just an image problem. The team background matches that.</p>
+            <p>This company is trying to solve a system problem, not just an image problem. Their background matches that.</p>
           </div>
         </div>
       </div>
@@ -827,9 +944,9 @@
   <footer class="footer">
     <div class="shell footer-card">
       <div>
-        <strong>Draft status:</strong> GitHub Pages-ready one-pager built from the deck narrative in this thread.
+        <strong>Current state:</strong> Draft investor one-pager.
       </div>
-      <div class="mono-note">Placeholder brand name in use. Swap with final startup name, logo, links, and proof points before publish.</div>
+      <div class="mono-note">Next thing to add: one real product artifact and one concrete example of use.</div>
     </div>
   </footer>
 </body>
