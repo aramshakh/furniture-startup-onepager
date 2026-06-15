@@ -6,29 +6,28 @@
   <title>Buildable Interiors — One-Pager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --background: oklch(0.98 0 247.84);
-      --background-lighter: oklch(0.99 0 247.84);
+      --background: oklch(0.98 0.00 247.84);
       --foreground: oklch(0.16 0.04 281.83);
       --primary: oklch(0.67 0.29 341.41);
       --secondary: oklch(0.96 0.02 286.02);
       --accent: oklch(0.89 0.17 171.27);
       --border: oklch(0.92 0.01 225.09);
-      --muted: oklch(0.55 0.015 255);
-      --card: oklch(1 0 0);
-      --warning-bg: rgb(254 243 199);
-      --warning-fg: rgb(180 83 9);
+      --muted: oklch(0.47 0.015 255);
+      --muted-strong: oklch(0.34 0.022 270);
       --success: #10b981;
       --indigo: rgb(99 102 241);
+      --warning-bg: rgb(254 243 199);
+      --warning-fg: rgb(180 83 9);
+      --card: rgb(255 255 255 / 0.94);
       --shadow-sm: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
       --shadow-md: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 2px 4px -3px hsl(0 0% 0% / 0.10);
-      --shadow-xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
       --radius-card: 16px;
       --radius-lg: 8px;
       --radius-md: 6px;
-      --max: 1180px;
+      --shell: 1120px;
     }
 
     * { box-sizing: border-box; }
@@ -44,20 +43,20 @@
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    p, h1, h2, h3 { margin: 0; }
+    h1, h2, h3, p { margin: 0; }
 
     .shell {
-      width: min(calc(100% - 24px), var(--max));
+      width: min(calc(100% - 24px), var(--shell));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
+      z-index: 40;
       backdrop-filter: blur(12px);
-      background: color-mix(in oklab, var(--background-lighter) 82%, white 18%);
-      border-bottom: 1px solid color-mix(in oklab, var(--border) 86%, white 14%);
+      background: color-mix(in oklab, rgb(255 255 255 / 0.84) 86%, var(--background) 14%);
+      border-bottom: 1px solid color-mix(in oklab, var(--border) 88%, white 12%);
     }
 
     .topbar-inner {
@@ -75,14 +74,15 @@
       font-size: 14px;
       font-weight: 600;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
 
     .brand-dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 0 0 6px rgba(239, 88, 139, 0.10);
+      background: var(--primary);
+      box-shadow: 0 0 0 5px rgb(239 88 139 / 0.10);
       flex: none;
     }
 
@@ -96,13 +96,16 @@
       min-height: 44px;
       padding: 10px 12px;
       border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: 14px;
       font-weight: 500;
-      color: color-mix(in oklab, var(--foreground) 80%, white 20%);
+      color: color-mix(in oklab, var(--foreground) 82%, white 18%);
     }
 
     .nav a:hover {
-      background: rgba(255,255,255,0.75);
+      background: rgb(255 255 255 / 0.76);
     }
 
     a:focus-visible,
@@ -111,20 +114,21 @@
       outline-offset: 2px;
     }
 
-    .hero {
-      padding: 28px 0 20px;
+    main {
+      padding: 22px 0 48px;
     }
 
-    .hero-grid {
+    .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+      grid-template-columns: minmax(0, 1.02fr) minmax(300px, 0.98fr);
       gap: 16px;
       align-items: stretch;
+      margin-bottom: 18px;
     }
 
     .panel {
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(255,255,255,0.72);
+      background: var(--card);
+      border: 1px solid rgb(255 255 255 / 0.7);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-sm);
     }
@@ -132,23 +136,21 @@
     .hero-copy {
       padding: 18px;
       display: grid;
-      gap: 16px;
       align-content: start;
+      gap: 14px;
       background:
-        radial-gradient(circle at top right, rgba(239,88,139,0.10), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(99,102,241,0.08), transparent 28%),
-        rgba(255,255,255,0.94);
+        radial-gradient(circle at top right, rgb(239 88 139 / 0.08), transparent 24%),
+        radial-gradient(circle at bottom left, rgb(99 102 241 / 0.07), transparent 28%),
+        var(--card);
     }
 
     .eyebrow,
-    .rail-label,
-    .mini-label,
-    .tag,
-    .artifact-code {
+    .mini-meta,
+    .stat-label,
+    .step-number {
       font-family: "Fira Code", monospace;
       font-size: 11px;
       line-height: 1.4;
-      letter-spacing: 0;
     }
 
     .eyebrow {
@@ -164,23 +166,30 @@
       height: 8px;
       border-radius: 999px;
       background: var(--primary);
-      box-shadow: 0 0 0 4px rgba(239,88,139,0.12);
+      box-shadow: 0 0 0 4px rgb(239 88 139 / 0.10);
+      flex: none;
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 50px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-      max-width: 12ch;
+      max-width: 11ch;
+      font-size: clamp(30px, 4vw, 36px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
       font-weight: 700;
     }
 
-    .hero-body {
-      max-width: 56ch;
+    .hero-body,
+    .section-intro,
+    .founder-copy,
+    .founder-proof li,
+    .opportunity-copy,
+    .proof-note {
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.58;
       color: color-mix(in oklab, var(--foreground) 86%, white 14%);
     }
+
+    .hero-body { max-width: 58ch; }
 
     .hero-actions {
       display: flex;
@@ -190,61 +199,62 @@
 
     .button,
     .button-secondary {
-      min-height: 40px;
-      padding: 0 14px;
+      min-height: 44px;
+      padding: 0 16px;
       border-radius: var(--radius-lg);
+      border: 1px solid transparent;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      box-shadow: var(--shadow-sm);
       font-size: 14px;
       font-weight: 500;
-      border: 1px solid transparent;
-      box-shadow: var(--shadow-sm);
     }
 
     .button {
       color: white;
-      background: color-mix(in srgb, var(--indigo) 90%, black 10%);
+      background: color-mix(in srgb, var(--indigo) 88%, black 12%);
     }
 
     .button-secondary {
-      background: rgba(255,255,255,0.8);
+      background: rgb(255 255 255 / 0.84);
       border-color: var(--border);
+      color: var(--foreground);
     }
 
     .hero-note {
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
       display: grid;
       gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
     }
 
     .hero-note p {
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.58;
       color: color-mix(in oklab, var(--foreground) 78%, white 22%);
     }
 
-    .artifact {
+    .proof-board {
       padding: 16px;
       display: grid;
       gap: 14px;
     }
 
-    .artifact-header {
+    .proof-board-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
 
-    .artifact-title {
+    .proof-title {
       font-size: 16px;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
 
-    .artifact-pill {
+    .proof-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -252,492 +262,478 @@
       border-radius: 999px;
       background: rgb(236 253 245);
       color: rgb(5 150 105);
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .artifact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .artifact-card {
-      padding: 14px;
-      border-radius: 12px;
-      background: color-mix(in oklab, var(--secondary) 72%, white 28%);
-      border: 1px solid var(--border);
-      display: grid;
-      gap: 6px;
-    }
-
-    .artifact-card strong,
-    .point strong,
-    .mini-compare strong,
-    .flow-title,
-    .support-item strong,
-    .founder-name {
-      font-size: 16px;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      font-weight: 600;
-    }
-
-    .artifact-card span,
-    .artifact-list li,
-    .point p,
-    .support-item p,
-    .founder-copy,
-    .footer-copy,
-    .compare-box li,
-    .flow-copy,
-    .proof-line,
-    .meta-copy {
-      font-size: 14px;
-      line-height: 1.6;
-      color: color-mix(in oklab, var(--foreground) 72%, white 28%);
-    }
-
-    .artifact-list {
-      margin: 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .image-placeholder {
-      display: grid;
-      gap: 10px;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px dashed color-mix(in oklab, var(--primary) 38%, var(--border) 62%);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,255,0.84)),
-        linear-gradient(135deg, rgba(239,88,139,0.04), rgba(99,102,241,0.04));
-    }
-
-    .image-placeholder.large {
-      min-height: 280px;
-      align-content: start;
-    }
-
-    .image-placeholder.medium {
-      min-height: 220px;
-      align-content: start;
-    }
-
-    .placeholder-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .placeholder-title {
-      font-size: 16px;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      font-weight: 600;
-    }
-
-    .placeholder-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 0 8px;
-      border-radius: 999px;
-      background: rgba(99,102,241,0.10);
-      color: var(--indigo);
-      font-size: 11px;
-      font-weight: 500;
-      font-family: "Fira Code", monospace;
-    }
-
-    .placeholder-frame {
-      min-height: 132px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background:
-        linear-gradient(rgba(230,233,242,0.8) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(230,233,242,0.8) 1px, transparent 1px),
-        linear-gradient(135deg, rgba(255,255,255,0.86), rgba(243,245,252,0.9));
-      background-size: 18px 18px, 18px 18px, auto;
-      display: grid;
-      place-items: center;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .placeholder-frame strong {
-      font-size: 15px;
-      line-height: 1.45;
-      letter-spacing: -0.02em;
-      max-width: 28ch;
-    }
-
-    .placeholder-copy {
-      font-size: 14px;
-      line-height: 1.6;
-      color: color-mix(in oklab, var(--foreground) 76%, white 24%);
-    }
-
-    .placeholder-list {
-      margin: 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-      font-size: 13px;
-      line-height: 1.55;
-      color: color-mix(in oklab, var(--foreground) 72%, white 28%);
-    }
-
-    .placeholder-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .placeholder-cell {
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.84);
-      display: grid;
-      gap: 6px;
-    }
-
-    .placeholder-cell strong {
-      font-size: 14px;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-    }
-
-    .section {
-      padding: 12px 0;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: 200px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-    }
-
-    .rail {
-      padding: 14px 10px 0 0;
-      position: sticky;
-      top: 76px;
-    }
-
-    .rail-label {
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .rail-copy {
-      font-size: 13px;
-      line-height: 1.55;
-      color: color-mix(in oklab, var(--foreground) 66%, white 34%);
-      max-width: 22ch;
-    }
-
-    .stack {
-      display: grid;
-      gap: 12px;
-    }
-
-    .section-card {
-      padding: 16px;
-    }
-
-    h2 {
-      font-size: clamp(24px, 3.4vw, 32px);
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-      font-weight: 600;
-      max-width: 16ch;
-    }
-
-    .intro {
-      max-width: 60ch;
-      font-size: 15px;
-      line-height: 1.65;
-      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
-    }
-
-    .compare-grid,
-    .three-grid,
-    .support-grid,
-    .team-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .compare-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .three-grid,
-    .support-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .team-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .compare-box,
-    .point,
-    .support-item,
-    .flow-row,
-    .founder,
-    .proof-strip,
-    .opportunity-row {
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.78);
-    }
-
-    .compare-head {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 500;
-      font-family: "Fira Code", monospace;
-    }
-
-    .compare-head.bad {
-      background: rgb(255 241 242);
-      color: rgb(190 24 93);
-    }
-
-    .compare-head.good {
-      background: rgb(236 253 245);
-      color: rgb(5 150 105);
-    }
-
-    .compare-box ul,
-    .support-item ul {
-      margin: 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .flow-board {
-      display: grid;
-      gap: 10px;
-    }
-
-    .flow-row {
-      display: grid;
-      grid-template-columns: 68px minmax(0, 200px) minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
-
-    .step {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 28px;
-      padding: 0 10px;
-      width: fit-content;
-      border-radius: 999px;
-      background: rgba(99,102,241,0.10);
-      color: var(--indigo);
-      font-family: "Fira Code", monospace;
       font-size: 11px;
       font-weight: 500;
     }
 
     .proof-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 12px;
-      align-items: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .proof-strip {
+    .proof-card {
+      padding: 12px;
+      border-radius: 12px;
+      background: color-mix(in oklab, white 82%, var(--secondary) 18%);
+      border: 1px solid color-mix(in oklab, var(--border) 84%, white 16%);
       display: grid;
-      gap: 10px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.82)),
-        linear-gradient(135deg, rgba(99,102,241,0.05), rgba(239,88,139,0.05));
+      gap: 6px;
+      min-height: 132px;
+    }
+
+    .proof-card.output {
+      background: color-mix(in oklab, white 78%, var(--accent) 22%);
     }
 
     .proof-label {
-      display: inline-flex;
-      width: fit-content;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--warning-bg);
-      color: var(--warning-fg);
-      font-family: "Fira Code", monospace;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
+      color: var(--muted);
     }
 
-    .proof-title {
-      font-size: 18px;
+    .proof-card strong,
+    .compare-card strong,
+    .founder-name,
+    .section-card h3,
+    .opportunity-card h3 {
+      font-size: 16px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    .proof-card p,
+    .compare-card p,
+    .section-card p,
+    .opportunity-card p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+    }
+
+    .proof-footer {
+      display: grid;
+      gap: 10px;
+      padding-top: 4px;
+      border-top: 1px solid var(--border);
+    }
+
+    .proof-summary {
+      font-size: 14px;
+      line-height: 1.55;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+      max-width: 56ch;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .section-rail {
+      padding-top: 8px;
+      position: sticky;
+      top: 84px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted-strong);
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: color-mix(in oklab, var(--primary) 40%, var(--border) 60%);
+    }
+
+    .section-rail p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 18ch;
+    }
+
+    .section-body {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section-card {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 600;
+      max-width: 16ch;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .compare-card {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgb(255 255 255 / 0.7);
+      display: grid;
+      gap: 10px;
+    }
+
+    .compare-card.good {
+      background: color-mix(in oklab, white 82%, var(--accent) 18%);
+    }
+
+    .compare-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+    }
+
+    .workflow-rail {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workflow-step {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .workflow-step:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(in oklab, var(--indigo) 82%, white 18%);
+      color: white;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .step-copy {
+      display: grid;
+      gap: 4px;
+      padding-top: 3px;
+    }
+
+    .step-copy strong {
+      font-size: 16px;
       line-height: 1.35;
       font-weight: 600;
       letter-spacing: -0.02em;
-      max-width: 26ch;
     }
 
-    .mini-compare {
+    .step-copy p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+      max-width: 52ch;
+    }
+
+    .support-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
 
-    .mini-compare > div {
-      padding: 12px;
+    .support-box {
+      padding: 14px;
       border-radius: 12px;
-      background: rgba(255,255,255,0.8);
       border: 1px solid var(--border);
+      background: color-mix(in oklab, white 84%, var(--secondary) 16%);
+      display: grid;
+      gap: 8px;
     }
 
-    .opportunity-list {
+    .support-box.warning {
+      background: color-mix(in oklab, white 78%, rgb(254 243 199) 22%);
+    }
+
+    .support-box strong {
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    .support-box p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+    }
+
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .opportunity-card {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgb(255 255 255 / 0.72);
+      display: grid;
+      gap: 8px;
+    }
+
+    .founder-wrap {
+      padding: 18px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .founder-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .founder-copy {
+      max-width: 58ch;
+    }
+
+    .founder-proof {
+      margin: 0;
+      padding-left: 18px;
       display: grid;
       gap: 10px;
     }
 
-    .opportunity-row {
+    .founder-photos {
       display: grid;
-      grid-template-columns: 64px minmax(0, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      align-items: start;
-    }
-
-    .stage {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 28px;
-      border-radius: 999px;
-      background: rgba(239,88,139,0.10);
-      color: rgb(190 24 93);
-      font-family: "Fira Code", monospace;
-      font-size: 11px;
-      font-weight: 500;
     }
 
     .founder {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgb(255 255 255 / 0.72);
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .founder-photo {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 4.4;
       object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid var(--border);
+      border-radius: 10px;
       box-shadow: var(--shadow-sm);
     }
 
     .founder-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      display: grid;
+      gap: 4px;
     }
 
     .role-badge {
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
-      padding: 0 8px;
+      width: fit-content;
+      min-height: 28px;
+      padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(99,102,241,0.10);
-      color: var(--indigo);
-      font-size: 11px;
-      font-weight: 500;
-      font-family: "Fira Code", monospace;
-    }
-
-    .support-item {
-      display: grid;
-      gap: 6px;
-    }
-
-    .footer {
-      padding: 16px 0 48px;
-    }
-
-    .footer-card {
-      padding: 14px 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255,255,255,0.82);
+      background: color-mix(in oklab, white 80%, var(--secondary) 20%);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      font-size: 11px;
+      line-height: 1.4;
+      font-weight: 500;
+      color: var(--muted-strong);
+    }
+
+    .final-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: var(--radius-card);
+      border: 1px solid color-mix(in oklab, var(--border) 88%, white 12%);
+      background: color-mix(in oklab, white 88%, var(--secondary) 12%);
+      display: grid;
+      gap: 8px;
       box-shadow: var(--shadow-sm);
     }
 
-    .footer-title {
-      font-size: 14px;
+    .final-note strong {
+      font-size: 15px;
+      line-height: 1.35;
       font-weight: 600;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+    }
+
+    .final-note p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: color-mix(in oklab, var(--foreground) 78%, white 22%);
+      max-width: 66ch;
+    }
+
+    footer {
+      padding-top: 18px;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 16px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
+      .hero,
       .section-grid,
-      .compare-grid,
-      .three-grid,
-      .support-grid,
-      .team-grid,
+      .founder-top,
+      .opportunity-grid,
       .proof-grid,
-      .mini-compare,
-      .placeholder-strip {
+      .support-grid,
+      .compare-grid {
         grid-template-columns: 1fr;
       }
 
-      .rail {
+      .section-rail {
         position: static;
         padding-top: 0;
+      }
+
+      .proof-grid {
+        gap: 8px;
       }
     }
 
     @media (max-width: 760px) {
+      main {
+        padding-top: 16px;
+      }
+
       .topbar-inner {
+        padding: 12px 0;
         align-items: flex-start;
         flex-direction: column;
-        padding: 12px 0;
       }
 
-      .hero {
-        padding-top: 18px;
-      }
-
-      .hero-grid,
-      .artifact-grid,
-      .flow-row,
-      .opportunity-row {
-        grid-template-columns: 1fr;
+      .nav {
+        gap: 4px 6px;
       }
 
       .hero-copy,
-      .artifact,
-      .section-card {
+      .proof-board,
+      .section-card,
+      .founder-wrap,
+      .final-note {
         padding: 14px;
       }
 
-      h1 { max-width: none; }
-      .nav { gap: 2px 6px; }
-      .nav a { padding-inline: 10px; }
+      h1 {
+        max-width: none;
+        font-size: 30px;
+      }
+
+      h2 {
+        max-width: none;
+        font-size: 24px;
+      }
+
+      .hero-body,
+      .section-intro,
+      .founder-copy,
+      .opportunity-copy,
+      .proof-note {
+        font-size: 15px;
+      }
+
+      .hero-note p:last-child {
+        display: none;
+      }
+
+      .proof-grid {
+        gap: 8px;
+      }
+
+      .proof-card {
+        min-height: auto;
+        padding: 11px;
+      }
+
+      .proof-summary {
+        font-size: 13px;
+      }
+
+      .founder-top > div:first-child {
+        order: 2;
+      }
+
+      .founder-photos {
+        grid-template-columns: 1fr;
+      }
+
+      .section-rail {
+        display: none;
+      }
+
+      .workflow-step {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .step-number {
+        width: 38px;
+        height: 38px;
+      }
+
+      .compare-card,
+      .support-box,
+      .opportunity-card,
+      .founder {
+        padding: 12px;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -748,394 +744,251 @@
       <nav class="nav" aria-label="Page sections">
         <a href="#problem">Problem</a>
         <a href="#workflow">Workflow</a>
-        <a href="#proof">Why hard</a>
+        <a href="#proof">Proof</a>
         <a href="#wedge">Wedge</a>
         <a href="#team">Team</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main class="shell">
     <section class="hero">
-      <div class="shell hero-grid">
-        <div class="panel hero-copy">
-          <div class="eyebrow">draft / investor one-pager / empy-ui reset</div>
-          <h1>Most interior AI makes pretty pictures.</h1>
-          <p class="hero-body">We’re trying to make rooms you can actually buy and build. Starting with empty apartments, we turn floorplans into furnished interiors tied to real items, real constraints, and real budgets.</p>
-          <div class="hero-actions">
-            <a class="button" href="#workflow">See the workflow</a>
-            <a class="button-secondary" href="#team">Why this team</a>
+      <div class="panel hero-copy">
+        <div class="eyebrow">investor one-pager</div>
+        <h1>Most interior AI makes pretty pictures.</h1>
+        <p class="hero-body">We’re trying to make rooms you can actually buy and build. Starting with empty apartments, we turn floorplans into furnished interiors tied to real items, real constraints, and real budgets.</p>
+        <div class="hero-actions">
+          <a class="button" href="#workflow">See the workflow</a>
+          <a class="button-secondary" href="#team">Why this team</a>
+        </div>
+        <div class="hero-note">
+          <p><strong>Learned truth:</strong> a generated room is not that useful if none of the furniture is real and no one can actually build it.</p>
+          <p><strong>Why now:</strong> image generation is no longer the bottleneck. The bottleneck is turning generated interiors into something usable in the real world.</p>
+        </div>
+      </div>
+
+      <aside class="panel proof-board" aria-label="Product proof board">
+        <div class="proof-board-header">
+          <div class="proof-title">A room that makes sense before it looks good</div>
+          <div class="proof-pill">grounded</div>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-card">
+            <div class="proof-label">Input</div>
+            <strong>Empty apartment or 2D floorplan</strong>
+            <p>Start from a real room, not from an image prompt with no physical consequences.</p>
           </div>
-          <div class="hero-note">
-            <p><strong>Learned truth:</strong> a generated room is not that useful if none of the furniture is real and no one can actually build it.</p>
-            <p><strong>Why now:</strong> image generation is no longer the bottleneck. The bottleneck is turning generated interiors into something usable in the real world.</p>
+          <div class="proof-card">
+            <div class="proof-label">Planning</div>
+            <strong>Layout, validity, and product matching</strong>
+            <p>Make the room usable before the final image becomes the answer.</p>
+          </div>
+          <div class="proof-card output">
+            <div class="proof-label">Output</div>
+            <strong>Furnished room tied to real items</strong>
+            <p>Style, dimensions, budget, and sourcing stay connected instead of drifting apart.</p>
           </div>
         </div>
-
-        <aside class="panel artifact" aria-label="Empy style artifact board">
-          <div class="artifact-header">
-            <div>
-              <div class="artifact-code">artifact / product board / v1</div>
-              <div class="artifact-title">A room that makes sense before it looks good</div>
-            </div>
-            <div class="artifact-pill">grounded</div>
-          </div>
-
-          <div class="artifact-grid">
-            <div class="artifact-card">
-              <div class="mini-label">Input</div>
-              <strong>Empty apartment or 2D floorplan</strong>
-              <span>A blank room is where the gap between inspiration and execution is easiest to see.</span>
-            </div>
-            <div class="artifact-card">
-              <div class="mini-label">Output</div>
-              <strong>Furnished, buildable room</strong>
-              <span>Real furniture, real materials, real budgets, and a path into sourcing.</span>
-            </div>
-          </div>
-
-          <ol class="artifact-list">
-            <li>Generate a room layout that makes sense for the actual apartment.</li>
-            <li>Check that the room is usable and coherent, not just visually plausible.</li>
-            <li>Match the concept to real items before the final render becomes the output.</li>
-          </ol>
-
-
-          <div class="image-placeholder large" aria-label="Hero product screenshot placeholder">
-            <div class="placeholder-top">
-              <div class="placeholder-title">Planned image — core product UI</div>
-              <div class="placeholder-badge">must-have</div>
-            </div>
-            <div class="placeholder-frame">
-              <strong>Desktop product UI showing input apartment / planning state / matched products / final room preview</strong>
-            </div>
-            <div class="placeholder-copy">Main proof image. It should make the product feel real in under 5 seconds.</div>
-            <ul class="placeholder-list">
-              <li>Left: floorplan or empty-apartment input</li>
-              <li>Middle: layout / validation / furniture placement</li>
-              <li>Right: product matches with price, dimensions, and availability</li>
-              <li>Visible status like grounded, validated, or budget-fit</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
+        <div class="proof-footer">
+          <p class="proof-note">The product should not stop at inspiration. It should end with a room someone can actually act on.</p>
+          <p class="proof-summary"><strong>What has to stay connected:</strong> real products, real dimensions, real budgets, and a sourcing path that still works after the render is done.</p>
+        </div>
+      </aside>
     </section>
 
     <section id="problem" class="section">
-      <div class="shell section-grid">
-        <aside class="rail">
-          <div class="rail-label">problem.ts</div>
-          <div class="rail-copy">Current tools are good at making rooms look finished. They are bad at getting anyone closer to actually furnishing them.</div>
-        </aside>
-        <div class="stack">
-          <div class="panel section-card stack">
+      <div class="section-grid">
+        <div class="section-rail">
+          <div class="section-kicker">Problem</div>
+          <p>The current category usually stops at the image.</p>
+        </div>
+        <div class="section-body">
+          <article class="panel section-card">
             <h2>Most interior AI stops at the image</h2>
-            <p class="intro">The image can look complete while the room is still fake. That is the core category failure.</p>
+            <p class="section-intro">The image can look complete while the room is still fake. That is the core category failure.</p>
             <div class="compare-grid">
-              <div class="compare-box">
-                <div class="compare-head bad">current output</div>
-                <ul>
-                  <li><strong>A nice image.</strong> Good for presentation. Weak for getting the room done.</li>
-                  <li><strong>Fake furniture.</strong> Nothing cleanly tied to pricing, sourcing, or specification.</li>
-                  <li><strong>No execution path.</strong> No practical handoff into furnishing or renovation.</li>
+              <div class="compare-card">
+                <strong>Pretty render</strong>
+                <ul class="compare-list">
+                  <li>Looks finished.</li>
+                  <li>No sourcing path.</li>
+                  <li>No dimensions or budget logic.</li>
+                  <li>Breaks as soon as someone asks what can actually be bought.</li>
                 </ul>
               </div>
-              <div class="compare-box">
-                <div class="compare-head good">needed output</div>
-                <ul>
-                  <li><strong>A room that makes sense.</strong> Grounded in layout logic before the final render.</li>
-                  <li><strong>Furniture tied to reality.</strong> Real items and materials instead of decorative fiction.</li>
-                  <li><strong>A path from image to action.</strong> Useful for sourcing, budgeting, and implementation.</li>
+              <div class="compare-card good">
+                <strong>Buildable room</strong>
+                <ul class="compare-list">
+                  <li>Starts from a real apartment.</li>
+                  <li>Holds up on layout, pricing, and product constraints.</li>
+                  <li>Links the visual output to real SKUs and materials.</li>
+                  <li>Gives the user a path into execution, not just inspiration.</li>
                 </ul>
               </div>
             </div>
-
-            <div class="image-placeholder medium" aria-label="Pretty render versus buildable room placeholder">
-              <div class="placeholder-top">
-                <div class="placeholder-title">Planned image — pretty vs buildable</div>
-                <div class="placeholder-badge">comparison</div>
-              </div>
-              <div class="placeholder-frame">
-                <strong>Side-by-side visual: glamorous but fake render on the left, grounded buildable room on the right</strong>
-              </div>
-              <div class="placeholder-copy">Minimal callouts only: fake furniture / no sourcing path vs real SKUs / real dimensions / execution-ready.</div>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="workflow" class="section">
-      <div class="shell section-grid">
-        <aside class="rail">
-          <div class="rail-label">workflow.ts</div>
-          <div class="rail-copy">Treat the product like a system, not like a render prompt.</div>
-        </aside>
-        <div class="stack">
-          <div class="panel section-card stack">
+      <div class="section-grid">
+        <div class="section-rail">
+          <div class="section-kicker">Workflow</div>
+          <p>Treat the product like a system, not like a render prompt.</p>
+        </div>
+        <div class="section-body">
+          <article class="panel section-card">
             <h2>From floorplan to buildable interior</h2>
-            <p class="intro">The room has to make sense before it can look good. The workflow should stay tied to constraints from the start.</p>
-            <div class="flow-board">
-              <div class="flow-row">
-                <div class="step">01</div>
-                <div class="flow-title">Layout</div>
-                <div class="flow-copy">Generate a furnished room layout that makes sense for the apartment and intended use.</div>
+            <p class="section-intro">The room has to make sense before it can look good. The workflow should stay tied to constraints from the start.</p>
+            <div class="workflow-rail" aria-label="Workflow steps">
+              <div class="workflow-step">
+                <div class="step-number">01</div>
+                <div class="step-copy">
+                  <strong>Layout</strong>
+                  <p>Generate a furnished room layout that makes sense for the apartment and intended use.</p>
+                </div>
               </div>
-              <div class="flow-row">
-                <div class="step">02</div>
-                <div class="flow-title">Validity</div>
-                <div class="flow-copy">Check that the room is usable, coherent, and not just visually plausible.</div>
+              <div class="workflow-step">
+                <div class="step-number">02</div>
+                <div class="step-copy">
+                  <strong>Validity</strong>
+                  <p>Check that the room is usable, coherent, and not just visually plausible.</p>
+                </div>
               </div>
-              <div class="flow-row">
-                <div class="step">03</div>
-                <div class="flow-title">Matching</div>
-                <div class="flow-copy">Connect the concept to real furniture and materials while preserving style, dimensions, and budget logic.</div>
+              <div class="workflow-step">
+                <div class="step-number">03</div>
+                <div class="step-copy">
+                  <strong>Matching</strong>
+                  <p>Connect the concept to real furniture and materials while preserving style, dimensions, and budget logic.</p>
+                </div>
               </div>
-              <div class="flow-row">
-                <div class="step">04</div>
-                <div class="flow-title">Rendering</div>
-                <div class="flow-copy">Produce the final room image only after the room concept is grounded in real-world constraints.</div>
+              <div class="workflow-step">
+                <div class="step-number">04</div>
+                <div class="step-copy">
+                  <strong>Rendering</strong>
+                  <p>Produce the final room image only after the room concept is grounded in real-world constraints.</p>
+                </div>
               </div>
             </div>
-
-            <div class="image-placeholder medium" aria-label="Planning and validation state placeholder">
-              <div class="placeholder-top">
-                <div class="placeholder-title">Planned image — planning layer</div>
-                <div class="placeholder-badge">workflow proof</div>
-              </div>
-              <div class="placeholder-frame">
-                <strong>Top-down planning state with room boundaries, furniture footprints, circulation, zones, and validation markers</strong>
-              </div>
-              <div class="placeholder-copy">Shows the intermediate planning layer, not just prompt → render magic.</div>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="proof" class="section">
-      <div class="shell section-grid">
-        <aside class="rail">
-          <div class="rail-label">proof.md</div>
-          <div class="rail-copy">The point is not a prettier render. The point is a room someone can actually act on.</div>
-        </aside>
-        <div class="stack">
-          <div class="proof-grid">
-            <div class="proof-strip">
-              <div class="proof-label">why this is hard</div>
-              <div class="proof-title">The room has to survive contact with reality.</div>
-              <div class="proof-line">Real dimensions. Real products. Real budgets. Real constraints. That is where the system has to hold.</div>
-            </div>
-            <div class="mini-compare">
-              <div>
-                <strong>Pretty render</strong>
-                <p class="meta-copy">Looks complete. Breaks as soon as someone asks what can actually be bought.</p>
-              </div>
-              <div>
-                <strong>Buildable room</strong>
-                <p class="meta-copy">Holds up when the next question is sourcing, pricing, or implementation.</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="image-placeholder medium" aria-label="Grounded SKU proof placeholder">
-            <div class="placeholder-top">
-              <div class="placeholder-title">Planned image — grounded output proof</div>
-              <div class="placeholder-badge">moat proof</div>
-            </div>
-            <div class="placeholder-frame">
-              <strong>Final room image with numbered item tags, SKU cards, dimensions, vendor names, and total room budget</strong>
-            </div>
-            <div class="placeholder-copy">Visual proof of grounding: make “buildable” concrete.</div>
-            <div class="placeholder-strip">
-              <div class="placeholder-cell">
-                <strong>Room image</strong>
-                <div class="meta-copy">Rendered room with 4–6 visible item markers.</div>
-              </div>
-              <div class="placeholder-cell">
-                <strong>SKU cards</strong>
-                <div class="meta-copy">Vendor, price, dimensions, availability.</div>
-              </div>
-              <div class="placeholder-cell">
-                <strong>Budget block</strong>
-                <div class="meta-copy">Total room package cost and substitutions if needed.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel section-card stack">
+      <div class="section-grid">
+        <div class="section-rail">
+          <div class="section-kicker">Proof</div>
+          <p>The room has to survive contact with reality.</p>
+        </div>
+        <div class="section-body">
+          <article class="panel section-card">
             <h2>The hard part is not image generation</h2>
-            <p class="intro">A stylish room is easy to fake. The hard part is making the room correspond to reality.</p>
-            <div class="three-grid">
-              <div class="point">
+            <p class="section-intro">A stylish room is easy to fake. The hard part is making the room correspond to reality.</p>
+            <div class="support-grid">
+              <div class="support-box warning">
                 <strong>Layout logic</strong>
                 <p>The room should make spatial sense before anyone cares whether it looks stylish.</p>
               </div>
-              <div class="point">
+              <div class="support-box">
                 <strong>Validity layer</strong>
                 <p>The system needs checks that keep the room usable, not just a taste layer.</p>
               </div>
-              <div class="point">
+              <div class="support-box">
                 <strong>Real products</strong>
                 <p>The output should connect the image to what can actually be bought, priced, and implemented.</p>
               </div>
+              <div class="support-box">
+                <strong>Grounded output</strong>
+                <p>The final room should hold up when the next question is sourcing, pricing, or substitutions.</p>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="wedge" class="section">
-      <div class="shell section-grid">
-        <aside class="rail">
-          <div class="rail-label">wedge.json</div>
-          <div class="rail-copy">Start where the pain is obvious: a blank apartment that has to become real fast.</div>
-        </aside>
-        <div class="stack">
-          <div class="panel section-card stack">
+      <div class="section-grid">
+        <div class="section-rail">
+          <div class="section-kicker">Wedge</div>
+          <p>Start where the pain is obvious: a blank apartment that has to become real fast.</p>
+        </div>
+        <div class="section-body">
+          <article class="panel section-card">
             <h2>Start where the pain is clearest: empty apartments</h2>
-            <p class="intro">We start with empty apartments because that is where the gap between inspiration and execution is most obvious. Someone has to turn a blank space into a room that can be sold, rented, or lived in.</p>
-            <div class="three-grid">
-              <div class="support-item">
-                <strong>Why this starting point works</strong>
+            <p class="section-intro">We start with empty apartments because that is where the gap between inspiration and execution is most obvious. Someone has to turn a blank space into a room that can be sold, rented, or lived in.</p>
+            <div class="opportunity-grid">
+              <div class="opportunity-card">
+                <h3>Why this starting point works</h3>
                 <p>Obvious before/after value, repeatable inputs, and a direct link into furnishing and renovation decisions.</p>
               </div>
-              <div class="support-item">
-                <strong>Who feels the pain first</strong>
+              <div class="opportunity-card">
+                <h3>Who feels the pain first</h3>
                 <p>Developers, furnishing operators, brokers, leasing teams, and anyone trying to get a unit move-in ready.</p>
               </div>
-              <div class="support-item">
-                <strong>Where it can expand</strong>
+              <div class="opportunity-card">
+                <h3>Where it can expand</h3>
                 <p>Furnishing packages, sourcing workflows, renovation planning, and eventually a transaction layer around execution.</p>
               </div>
             </div>
-
-            <div class="image-placeholder large" aria-label="Empty apartment case study placeholder">
-              <div class="placeholder-top">
-                <div class="placeholder-title">Planned image — empty apartment case</div>
-                <div class="placeholder-badge">wedge proof</div>
-              </div>
-              <div class="placeholder-frame">
-                <strong>Three-frame case: empty unit → structured plan → furnished buildable result</strong>
-              </div>
-              <div class="placeholder-copy">Use a believable real apartment. This should make the wedge obvious at a glance.</div>
-              <div class="placeholder-strip">
-                <div class="placeholder-cell">
-                  <strong>Frame 1</strong>
-                  <div class="meta-copy">Real empty apartment photo or floorplan.</div>
-                </div>
-                <div class="placeholder-cell">
-                  <strong>Frame 2</strong>
-                  <div class="meta-copy">Layout overlay with zones, dimensions, and furniture footprints.</div>
-                </div>
-                <div class="placeholder-cell">
-                  <strong>Frame 3</strong>
-                  <div class="meta-copy">Final interior tied to real items, not fantasy furniture.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel section-card stack">
-            <h2>What starts as interior generation can become an execution layer</h2>
-            <div class="opportunity-list">
-              <div class="opportunity-row">
-                <div class="stage">now</div>
-                <div>
-                  <strong>Generate interiors that can actually be built</strong>
-                  <div class="meta-copy">Useful when someone actually has to furnish the room rather than just admire it.</div>
-                </div>
-              </div>
-              <div class="opportunity-row">
-                <div class="stage">next</div>
-                <div>
-                  <strong>Connect design to furnishing and sourcing</strong>
-                  <div class="meta-copy">Help people choose products, price rooms, and prepare the handoff into implementation.</div>
-                </div>
-              </div>
-              <div class="opportunity-row">
-                <div class="stage">later</div>
-                <div>
-                  <strong>Become a transaction layer for interiors</strong>
-                  <div class="meta-copy">Move from generation into the infrastructure that connects room design to execution and purchase.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="image-placeholder medium" aria-label="Implementation handoff placeholder">
-              <div class="placeholder-top">
-                <div class="placeholder-title">Planned image — handoff artifact</div>
-                <div class="placeholder-badge">end state</div>
-              </div>
-              <div class="placeholder-frame">
-                <strong>One-page room package or spec sheet with image, product list, pricing, and install notes</strong>
-              </div>
-              <div class="placeholder-copy">Show the end output: something a user can act on, not just admire.</div>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="team" class="section">
-      <div class="shell section-grid">
-        <aside class="rail">
-          <div class="rail-label">team.yml</div>
-          <div class="rail-copy">The founders have spent years on pieces of this problem already.</div>
-        </aside>
-        <div class="stack">
-          <div class="panel section-card stack">
-            <h2>The founders have spent years on pieces of this problem already</h2>
-            <p class="intro">They did not arrive at this category by accident. Aram has spent years trying to turn technical capability into products people actually want, and Vladimir has spent years building the underlying ML and computer vision systems behind problems like this.</p>
-            <div class="team-grid">
-              <article class="founder">
-                <img class="founder-photo" src="./aram.jpg" alt="Aram founder portrait" />
-                <div class="founder-meta">
-                  <div class="founder-name">Aram</div>
-                  <div class="role-badge">product / founder</div>
-                </div>
-                <p class="founder-copy">Repeat founder with product judgment and startup scar tissue. Strong at telling the difference between technical novelty and something people will actually pay for.</p>
-              </article>
-              <article class="founder">
-                <img class="founder-photo" src="./vladimir-borisov.jpg" alt="Vladimir Borisov founder portrait" />
-                <div class="founder-meta">
-                  <div class="founder-name">Vladimir</div>
-                  <div class="role-badge">ml / cv / systems</div>
-                </div>
-                <p class="founder-copy">Deep applied AI builder across generative imaging, recommendation, vector search, mobile AI, and production ML. Strong at turning hard technical systems into something that can actually ship.</p>
-              </article>
-            </div>
-            <div class="support-grid">
-              <div class="support-item">
-                <strong>Serious environments</strong>
-                <p>Both founders have worked in demanding applied AI settings, including Google-related work.</p>
+      <div class="section-grid">
+        <div class="section-rail">
+          <div class="section-kicker">Team</div>
+          <p>This is not a random theme page. It comes from people who have already spent years on adjacent hard parts.</p>
+        </div>
+        <div class="section-body">
+          <article class="panel founder-wrap">
+            <div class="founder-top">
+              <div>
+                <h2>The founders have spent years on pieces of this problem already</h2>
+                <p class="founder-copy">This is not a cold start. The thesis comes from prior work around generative visuals, applied ML, and building systems that have to survive contact with real constraints.</p>
+                <ul class="founder-proof">
+                  <li>They are not trying to make another inspiration tool. They are trying to close the gap between room generation and execution.</li>
+                  <li>The opportunity is not just prettier room imagery. It is a system that can move from empty space to a furnishable outcome.</li>
+                  <li>The strongest early wedge is where the pain is concrete, repeatable, and operationally urgent.</li>
+                </ul>
               </div>
-              <div class="support-item">
-                <strong>Pieces of the same problem</strong>
-                <p>Recommendation, compatibility, visual generation, retail workflows, and applied CV all point toward this category.</p>
-              </div>
-              <div class="support-item">
-                <strong>Why it matters</strong>
-                <p>This company is trying to solve a system problem, not just an image problem. Their background matches that.</p>
+              <div class="founder-photos">
+                <article class="founder">
+                  <img class="founder-photo" src="./aram.jpg" alt="Aram founder portrait" />
+                  <div class="founder-meta">
+                    <div class="founder-name">Aram</div>
+                    <div class="role-badge">product / founder</div>
+                  </div>
+                </article>
+                <article class="founder">
+                  <img class="founder-photo" src="./vladimir-borisov.jpg" alt="Vladimir Borisov founder portrait" />
+                  <div class="founder-meta">
+                    <div class="founder-name">Vladimir</div>
+                    <div class="role-badge">ml / cv / systems</div>
+                  </div>
+                </article>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="shell">
-      <div class="footer-card">
-        <div>
-          <div class="footer-title">Current state: Empy-system investor draft.</div>
-          <div class="footer-copy">Next best improvement: add one real product artifact and one concrete example of use.</div>
-        </div>
-        <div class="artifact-code">buildable-interiors / pages / onepager</div>
-      </div>
+    <div class="final-note">
+      <strong>What this page is trying to say</strong>
+      <p>Most interior AI ends at the render. We’re interested in the system that turns a blank apartment into a room someone can actually buy, build, and move into.</p>
     </div>
-  </footer>
+
+    <footer>
+      <div class="footer-row">
+        <div>Buildable Interiors</div>
+        <div>Empty apartments → grounded rooms → execution path</div>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
